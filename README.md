@@ -33,6 +33,21 @@ The easiest way to get started with OpnForm is with the [official managed servic
 
 It takes 1 minute to try out the builder for free. You'll have high availability, backups, security, and maintenance all managed for you.
 
+## Running the project locally
+
+The project can be run locally via docker:
+- Clone the project
+- `cd` in the project
+- Start the docker container: `docker compose up -d`
+- Get into the container's shell with `docker compose exec -it opnform-laravel.test-1 bash`
+- Run the following commands. 
+  - Run `npm install && npm run production`
+  - Run `php artisan key:generate`
+  - Run `php artisan jwt:secret`
+  - Run `php artisan migrate`
+
+You should now be able to access the application at [http://0.0.0.0:3000/](http://0.0.0.0:3000/). You can also access the file storage app Minio at [http://localhost:8900/](http://localhost:8900/) (default user: `sail`, default password: `secret`) and Mailhog, our email interceptor tool at [http://localhost:8025](http://localhost:8025)
+
 ## Self-hosting
 
 This section hasn't been written yet, we need to work on this. 
