@@ -38,6 +38,7 @@ It takes 1 minute to try out the builder for free. You'll have high availability
 The project can be run locally via docker:
 - Clone the project
 - `cd` in the project
+- Create a `.env` file with `mv .env.example .env`
 - Start the docker container: `docker compose up -d`
 - Get into the container's shell with `docker compose exec -it opnform-laravel.test-1 bash`
 - Run the following commands. 
