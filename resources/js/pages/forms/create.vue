@@ -101,7 +101,9 @@ export default {
       }
     },
     workspace() {
-      return this.$store.getters['open/workspaces/getCurrent']()
+      if (this.workspaces && this.workspaces.length) {
+        return this.$store.getters['open/workspaces/getCurrent']()
+      }
     },
     createdForm() {
       return this.$store.getters['open/forms/getById'](this.createdFormId)
@@ -212,11 +214,14 @@ export default {
         this.$store.commit('open/forms/addOrUpdate', response.data.form)
         this.createdFormId = response.data.form.id
 
-        this.$logEvent('form_created', {form_id:  response.data.form.id, form_slug:  response.data.form.slug})
-        this.$getCrisp().push(['set', 'session:event', [[['form_created', {
-          form_id:  response.data.form.id,
-          form_slug:  response.data.form.slug
-        }, 'blue']]]])
+        this.$logEvent('form_created', {form_id: response.data.form.id, form_slug: response.data.form.slug})
+        const crisp = this.$getCrisp()
+        if (crisp) {
+          crisp.push(['set', 'session:event', [[['form_created', {
+            form_id: response.data.form.id,
+            form_slug: response.data.form.slug
+          }, 'blue']]]])
+        }
         this.displayFormModificationAlert(response.data)
         this.$router.push({
           name: 'forms.show',
@@ -230,6 +235,7 @@ export default {
           this.validationErrorResponse = error.response.data
           this.$refs.editor.showValidationErrors()
         }
+        throw error
       }).finally(() => {
         this.createFormLoading = false
       })

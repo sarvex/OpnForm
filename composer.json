@@ -11,12 +11,6 @@
   ],
   "license": "MIT",
   "type": "project",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/JhumanJ/laravel-notion-api.git"
-    }
-  ],
   "require": {
     "php": "^8.0",
     "ext-json": "*",
@@ -48,6 +42,7 @@
     "barryvdh/laravel-ide-helper": "^2.12",
     "fakerphp/faker": "^1.9.1",
     "laravel/dusk": "^6.8",
+    "laravel/sail": "^1.16",
     "mockery/mockery": "^1.4.2",
     "nunomaduro/collision": "^6.1",
     "pestphp/pest": "^1.15",
