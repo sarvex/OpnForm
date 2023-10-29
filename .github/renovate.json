@@ -1,3 +1,4 @@
 {
-  "extends": ["github>sarvex/renovate-configs:js-lib"]
+  "extends": ["github>sarvex/renovate-configs:js-lib",
+  "github>sarvex/renovate-configs:php"]
 }
